@@ -1,0 +1,9 @@
+[slack]
+url=https://hooks.slack.com/services/abcd1234/abcd1234/abcd1234
+channel=controllers-status
+username=Device Controller Bot
+icon_emoji=computer
+type=mrkdwn
+
+[device]
+name=Raspberry Pi 1
