@@ -18,7 +18,7 @@ config.read(config_path)
 
 output = subprocess.run(['ifconfig','-a'],check=True, stdout=subprocess.PIPE, universal_newlines=True)
 
-message = '**' + str(config['device']['name']) + '**' + " is connected with IP:" + '**' + str(ip_refelctor_response.content) + '**' + '.\n\n $ ifconfig -a results: \n\n' + '`' + str(output) + '`'
+message = '*' + str(config['device']['name']) + '*' + " is connected with IP:" + '`*' + str(ip_refelctor_response.content) + '*`' + '.\n\n $ ifconfig -a results: \n\n' + '```' + str(output) + '```'
 
 slackQueryData = '''{
     "channel": "#''' + config['slack']['channel'] + '''",
