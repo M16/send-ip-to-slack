@@ -10,7 +10,7 @@ import subprocess
 logging.basicConfig(level=logging.INFO)
 config = configparser.ConfigParser()
 
-ip_refelctor_response = requests.get('http://ip.fyr.io/', timeout=10)
+ip_refelctor_response = requests.get('http://myexternalip.com/raw', timeout=10)
 
 config_path = str(pathlib.Path(__file__).parent.absolute()) + '/config.ini'
 
@@ -18,7 +18,7 @@ config.read(config_path)
 
 output = subprocess.run(['ifconfig','-a'],check=True, stdout=subprocess.PIPE, universal_newlines=True)
 
-message = '*' + str(config['device']['name']) + '*' + " is connected with IP:" + '`*' + str(ip_refelctor_response.content) + '*`' + '.\n\n $ ifconfig -a results: \n\n' + '```' + str(output) + '```'
+message = '*' + str(config['device']['name']) + '*' + " is connected with IP:" + '`' + str(ip_refelctor_response.text) + '`' + '.\n\n $ ifconfig -a results: \n\n' + '```' + str(output) + '```'
 
 slackQueryData = '''{
     "channel": "#''' + config['slack']['channel'] + '''",
